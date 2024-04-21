@@ -1,0 +1,12 @@
+.Login {
+  border: 1px solid #5e50a1 !important;
+  text-align: center !important;
+  color: #5e50a1 !important; /* Menetapkan warna teks dengan !important */
+}
+
+.Register {
+  text-align: center !important;
+  background-color: #5e50a1 !important;
+  color: white !important;
+  border: 1px solid #5e50a1 !important;
+}
