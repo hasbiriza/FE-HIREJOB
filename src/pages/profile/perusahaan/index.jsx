@@ -77,7 +77,7 @@ function ProfilePerekrut() {
             </small>
           </div>
 
-          <Button className="editprofilebutton  w-25 BgSecondaryColor mt-2">Edit Profile</Button>
+          <Button className="editprofilebutton w-25 BgSecondaryColor mt-2">Edit Profile</Button>
 
           {/* Bagian2 Logo */}
           <div className="mb-5">
