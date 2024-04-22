@@ -9,7 +9,7 @@ const RegisterFormPerusahaan = () => {
         className="d-flex flex-column justify-content-center mt-5"
         style={{ width: "80%", height: "95vh" }}
       >
-        <div>
+        <div style={{ marginTop:"20vh" }}>
           <h2>Halo, Pewpeople</h2>
           <p className="mt-3 mb-4">
             {" "}

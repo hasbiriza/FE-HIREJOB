@@ -10,12 +10,23 @@
   background-color: #5e50a1 !important;
   color: white !important;
   border: 1px solid #5e50a1 !important;
+  
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 344px) and (max-width: 894px) {
+
+  .editprofilebutton {
+    width: 200px !important;
+    height: 40px !important;
+
+  }
+}
+
+
+@media screen and (min-width: 344px) and (max-width: 768px) {
   .bannerauth {
     display: none;
   }
-  
+
 }

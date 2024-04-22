@@ -4,10 +4,10 @@ import bg1 from "@/assets/img/bg1.png";
 
 const Banner = () => {
   return (
-    <div className="  col-6 d-flex justify-content-center align-items-center ">
+    <div className="col-6 d-flex justify-content-center align-items-center  ">
       <div
         className="position-relative bannerauth"
-        style={{ width: "95%", height: "100vh" }}
+        style={{ width: "95%", height: "90vh",  }}
       >
         <Image
           src={bg1}

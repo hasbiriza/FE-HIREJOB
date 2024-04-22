@@ -24,19 +24,19 @@ const LoginForm = () => {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className=" text-muted ">Email</Form.Label>
-                <Form.Control type="email" placeholder="Masukan alamat email" />
+                <Form.Control type="email" placeholder="Masukan alamat email" required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className=" text-muted ">Password</Form.Label>
-                <Form.Control type="password" placeholder="Masukkan password" />
+                <Form.Control type="password" placeholder="Masukkan password" required />
               </Form.Group>
               <Link href={"/auth/Reset"} className=" d-block text-end text-decoration-none text-dark">
                 {" "}
                 Lupa Kata Sandi ?
               </Link>
 
-              <Button className=" my-4 BgPrimaryColor w-100 " type="submit">
+              <Button href={"/auth/Register/Pekerja"} className=" my-4 BgPrimaryColor w-100 " type="submit">
                 Masuk
               </Button>
               <p className=" text-center ">

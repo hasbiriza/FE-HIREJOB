@@ -7,9 +7,9 @@ const RegisterFormPekerja = () => {
     <div className=" col-sm-12 col-md-6 col-lg-6 col-12  d-flex justify-content-center align-items-center">
       <div
         className="d-flex flex-column justify-content-center "
-        style={{ width: "80%", height: "95vh" }}
+        style={{ width: "80%", height: "104vh", }}
       >
-        <div>
+        <div style={{ marginTop:"60px" }}>
           <h2>Halo, Pewpeople</h2>
           <p className="mt-3 mb-5">
             {" "}

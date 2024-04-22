@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className={`${styles.footer} text-light border border-danger w-100 mt-4`}>
+    <footer className={`${styles.footer} text-light border border-danger mt-5 pt-5 `}>
       <div className="d-flex align-items-center border border-danger">
         <div style={{ position: "relative", height: 40, width: 40 }}>
           <Image

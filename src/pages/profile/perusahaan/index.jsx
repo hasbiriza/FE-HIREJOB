@@ -37,29 +37,33 @@ function ProfilePerekrut() {
   return (
     <>
       <Navbar1 />
-      <div className="container border border-danger mt-4 d-flex flex-column align-items-center ">
+      <div
+        className="container d-flex flex-column align-items-center "
+        style={{ marginBottom: "20vh", marginTop: "10vh",border:"1px solid #ccc",borderRadius:"10px", boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2)"}}
+      >
         <div
           className="rounded"
           style={{
             backgroundColor: "#5E50A1",
-            width: "100%",
-            height: "30vh",
+            width: "101.95%",
+            height: "20vh",
             zIndex: "0",
-            position: "relative",
+            position: "",
           }}
         />
         <Image
           src={pp}
           alt="pp"
-          className="my-3 img-fluid border border-danger position-relative  "
+          className="mt-3 mb-5 img-fluid position-absolute "
           style={{
-            top: "-80px",
+            top: "27vh", 
           }}
         />
-
-        <div className=" w-75 border border-danger d-flex flex-column  align-items-center ">
+        <div 
+        style={{ marginTop:"12vh" }}
+        className=" w-75 d-flex flex-column align-items-center ">
           <h3 className=" d-block ">PT.MARTABAT JAYA ABADI</h3>
-          
+
           <div>
             <small>
               <FaMapMarkerAlt /> Alamat
@@ -73,28 +77,29 @@ function ProfilePerekrut() {
             </small>
           </div>
 
-          <Button className="w-25 BgSecondaryColor mt-2">Edit Profile</Button>
+          <Button className="editprofilebutton  w-25 BgSecondaryColor mt-2">Edit Profile</Button>
 
           {/* Bagian2 Logo */}
-          <div className="text-secondary mt-4 ">
-            <FaRegEnvelope /> <small className="ms-1">Cek123</small>
-          </div>
+          <div className="mb-5">
+            <div className="text-secondary mt-4 ">
+              <FaRegEnvelope /> <small className="ms-1">Email</small>
+            </div>
 
-          <div className="text-secondary mt-1">
-            <FaInstagram /> <small className="ms-1">asdasd</small>
-          </div>
+            <div className="text-secondary mt-1">
+              <FaInstagram /> <small className="ms-1">Instagram</small>
+            </div>
 
-          <div className="text-secondary mt-1">
-            <FaPhoneAlt /> <small className="ms-1">Github</small>
-          </div>
+            <div className="text-secondary mt-1">
+              <FaPhoneAlt /> <small className="ms-1">Phone Number</small>
+            </div>
 
-          <div className="text-secondary mt-1">
-            <FaLinkedin /> <small className="ms-1">LINKEDIN</small>
+            <div className="text-secondary mt-1 mb-5">
+              <FaLinkedin /> <small className="ms-1">LinkedIn</small>
+            </div>
           </div>
         </div>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }
