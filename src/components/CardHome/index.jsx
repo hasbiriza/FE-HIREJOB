@@ -5,7 +5,10 @@ import miniprofile from "@/assets/img/miniprofile.png";
 import pinmap from "@/assets/img/pinmap.png";
 
 const CardHome = (props) => {
-  const { name, skills, address, id } = props;
+  const { name, skills, address, id, photo} = props;
+  const imageWidth = 500;
+  const imageHeight =500;
+
 
   return (
     <>
@@ -13,10 +16,12 @@ const CardHome = (props) => {
         {/* Bagian Kiri */}
         <div className="col-lg-1 col-md-2 col-sm-2">
           <Image
-            src={miniprofile}
+            src={photo}
             alt="miniprofile"
             className="me-2"
             style={{ marginTop: "30px" }}
+            width={imageWidth}
+            height={imageHeight}
           />
         </div>
         {/* Bagian Tengah */}
