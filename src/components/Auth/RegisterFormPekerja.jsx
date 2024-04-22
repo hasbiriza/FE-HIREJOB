@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const RegisterFormPekerja = () => {
   return (
-    <div className=" col-6  d-flex justify-content-center align-items-center">
+    <div className=" col-sm-12 col-md-6 col-lg-6 col-12  d-flex justify-content-center align-items-center">
       <div
         className="d-flex flex-column justify-content-center "
         style={{ width: "80%", height: "95vh" }}

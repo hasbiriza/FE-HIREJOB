@@ -102,7 +102,7 @@ const ProfileIdDetail = () => {
 
               {/*  Column Kanan */}
 
-            <div className="col-12  col-md-8  border border-warning">
+            <div className="col-12  col-md-8  mt-5  mt-md-0  border border-warning">
               <div className="
               card rounded p-2 border border-info">
                 <div style={{ marginLeft: "30px", marginTop: "10px" }}>
@@ -136,9 +136,9 @@ const ProfileIdDetail = () => {
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
                       {pengalaman.map((item, index) => (
-                        <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap" style={{ paddingRight: "20px" }}>
+                        <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap border border-danger" style={{ paddingRight: "20px" }}>
                           <div className="col-2" style={{ paddingTop: "20px", textAlign: "center" }}>
-                          <Image src={tokped} alt="tokped" />
+                          <Image className="img-fluid" src={tokped} alt="tokped" />
                           </div>
                           <div className="col-10">
                             <h3>{item.Posisi}</h3>

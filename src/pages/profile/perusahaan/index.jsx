@@ -6,6 +6,10 @@ import Navbar1 from "@/components/Navbar/Navbar";
 import Image from "next/image"; // Import Image dari next/image
 import miniprofile from "@/assets/img/miniprofile.png";
 import pp from "@/assets/img/Harry.png";
+import logophone from "@/assets/img/logophone.png";
+import logomail from "@/assets/img/logomail.png";
+import logolinkedin from "@/assets/img/logolinkedin.png";
+import logoinstagram from "@/assets/img/logoinstagram.png";
 import Footer from "@/components/Footer/Footer";
 import { Button } from "react-bootstrap";
 
@@ -50,13 +54,17 @@ function ProfilePerekrut() {
         <p className=" d-block">Financial</p>
         <p className=" d-block">Alamat</p>
         <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam modi molestias sed in voluptatum voluptate repellat magnam minima pariatur beatae!</p>
+        <div className="border border-danger"> <Image src={logomail} alt="logomail"/>Mantap 
+           <p className="ms-5">mantap pool</p>
+            </div>
 
         <Button className="w-25 BgSecondaryColor">Edit Profile</Button>
       </div>
-
-      </div>
       
       <Footer/>
+      </div>
+      
+      
     </>
   );
 }
