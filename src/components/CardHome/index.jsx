@@ -6,8 +6,8 @@ import pinmap from "@/assets/img/pinmap.png";
 
 const CardHome = (props) => {
   const { name, skills, address, id, photo} = props;
-  const imageWidth = 500;
-  const imageHeight =500;
+  const imageWidth = 100;
+  const imageHeight =100;
 
 
   return (

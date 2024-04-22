@@ -16,7 +16,7 @@ const ProfileIdDetail = () => {
   const [pekerja, setPekerja] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/user/${router.query.id}`)
+      .get(`http://localhost:8080/api/v1/experience/${router.query.id}`)
       .then((res) => {
         setPekerja(res.data.data);
         console.log(res.data.data);
@@ -67,7 +67,7 @@ const ProfileIdDetail = () => {
                         
                       }}>
                   {/* {JSON.stringify(pekerja)} */}
-                  <h3>{pekerja.Name}</h3>
+                  <h3>{pekerja.User.Name}</h3>
                   <h5>{pekerja.Pekerjaan}</h5>
                   <h5>
                     <Image src={pinmap} alt="pinmap" /> {pekerja.Alamat}
