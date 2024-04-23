@@ -8,7 +8,6 @@ import miniprofile from "@/assets/img/miniprofile.png";
 import pp from "@/assets/img/Harry.png";
 import Footer from "@/components/Footer/Footer";
 import { Button } from "react-bootstrap";
-
 import {
   FaMapMarkerAlt,
   FaInstagram,
@@ -16,23 +15,31 @@ import {
   FaRegEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
+import axios from "axios";
+import { useRouter } from "next/router";
 
-function ProfilePerekrut() {
-  const fallbackImage = "/Make Your Day.jpg";
 
-  // Inisialisasi data lokal
-  const [userData, setUserData] = useState({
-    // foto_perusahaan: "/path/to/foto_perusahaan.jpg",
-    nama_perusahaan: "PT PIJAR CAMP ",
-    jabatan: "Jabatan",
-    bidang_perusahaan: "Bidang Perusahaan",
-    provinsi: "Provinsi",
-    kota: "Kota",
-    info_perusahaan: "Informasi Perusahaan",
-    email_perusahaan: "email@perusahaan.com",
-    phone_perusahaan: "1234567890",
-    linkedin: "https://www.linkedin.com/company/perusahaan",
-  });
+
+const ProfilePerekrut = () => {
+  const router = useRouter();
+  const [recruiter, setRecruiter] = useState([]);
+ 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/v1/user/${router.query.id}`) // Fix to use string for URL
+      .then((res) => {
+          setRecruiter(res.data.data);
+          console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching users:", err);
+      });
+  }, [router.query.id]); // Empty dependency array to run once on mount
+
+
+
+
+  
 
   return (
     <>
@@ -62,7 +69,7 @@ function ProfilePerekrut() {
         <div 
         style={{ marginTop:"12vh" }}
         className=" w-75 d-flex flex-column align-items-center ">
-          <h3 className=" d-block ">PT.MARTABAT JAYA ABADI</h3>
+          <h3 className=" d-block ">{recruiter.Name}</h3>
 
           <div>
             <small>

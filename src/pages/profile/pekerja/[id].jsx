@@ -16,7 +16,7 @@ const ProfileIdDetail = () => {
   const [pekerja, setPekerja] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/experience/${router.query.id}`)
+      .get(`http://localhost:8080/api/v1/user/${router.query.id}`)
       .then((res) => {
         setPekerja(res.data.data);
         console.log(res.data.data);
@@ -60,20 +60,20 @@ const ProfileIdDetail = () => {
             {/* Column Kiri */}
             <div className="col-12  col-md-4 border border-danger">
               <div className="card rounded p-2 d-flex flex-column align-items-center border border-info ">
-                <Image src={pp} alt="pp" className="my-3 img-fluid " />
+                <Image src={pekerja.photo} alt="pp" className="my-3 img-fluid " height={100} width={100} />
                 <div className="border border-danger" 
                       style={{
                         width:"90%"
                         
                       }}>
                   {/* {JSON.stringify(pekerja)} */}
-                  <h3>{pekerja.User.Name}</h3>
+                  <h3>{pekerja.Name}</h3>
                   <h5>{pekerja.Pekerjaan}</h5>
                   <h5>
-                    <Image src={pinmap} alt="pinmap" /> {pekerja.Alamat}
+                    <Image src={pinmap} alt="pinmap" /> {pekerja.Address}
                   </h5>
                   <h5>{pekerja.Status}</h5>
-                  <h5 className="mt-2 mb-3">{pekerja.Deskripsi}</h5>
+                  <h5 className="mt-2 mb-3">{pekerja.Description}</h5>
                   <Link href="/hire">
                     <Button
                       className="w-100"
