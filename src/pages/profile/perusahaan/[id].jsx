@@ -18,35 +18,36 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 
-
-
 const ProfilePerekrut = () => {
   const router = useRouter();
-  const [recruiter, setRecruiter] = useState([]);
- 
+  const [user, setUser] = useState([]);
+  const { id } = router.query;
+
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/user/${router.query.id}`) // Fix to use string for URL
+      .get(`http://localhost:8080/api/v1/user/${router.query.id}`)
       .then((res) => {
-          setRecruiter(res.data.data);
-          console.log(res.data.data);
+        const perusahaanData = res.data.data;
+        setUser(perusahaanData);
+        console.log(res.data.data);
       })
       .catch((err) => {
-        console.error("Error fetching users:", err);
+        console.log(err);
       });
   }, [router.query.id]); // Empty dependency array to run once on mount
-
-
-
-
-  
 
   return (
     <>
       <Navbar1 />
       <div
         className="container d-flex flex-column align-items-center "
-        style={{ marginBottom: "20vh", marginTop: "10vh",border:"1px solid #ccc",borderRadius:"10px", boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2)"}}
+        style={{
+          marginBottom: "20vh",
+          marginTop: "10vh",
+          border: "1px solid #ccc",
+          borderRadius: "10px",
+          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+        }}
       >
         <div
           className="rounded"
@@ -63,17 +64,18 @@ const ProfilePerekrut = () => {
           alt="pp"
           className="mt-3 mb-5 img-fluid position-absolute "
           style={{
-            top: "27vh", 
+            top: "27vh",
           }}
         />
-        <div 
-        style={{ marginTop:"12vh" }}
-        className=" w-75 d-flex flex-column align-items-center ">
-          <h3 className=" d-block ">{recruiter.Name}</h3>
+        <div
+          style={{ marginTop: "12vh" }}
+          className=" w-75 d-flex flex-column align-items-center "
+        >
+          <h3 className=" d-block ">{user.Name}</h3>
 
           <div>
             <small>
-              <FaMapMarkerAlt /> Alamat
+              <FaMapMarkerAlt /> {user.Address}
             </small>
           </div>
 
@@ -84,7 +86,9 @@ const ProfilePerekrut = () => {
             </small>
           </div>
 
-          <Button className="editprofilebutton w-25 BgSecondaryColor mt-2">Edit Profile</Button>
+          <Button className="editprofilebutton w-25 BgSecondaryColor mt-2">
+            Edit Profile
+          </Button>
 
           {/* Bagian2 Logo */}
           <div className="mb-5">
@@ -109,6 +113,6 @@ const ProfilePerekrut = () => {
       <Footer />
     </>
   );
-}
+};
 
 export default ProfilePerekrut;

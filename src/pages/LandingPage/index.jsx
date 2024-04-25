@@ -24,7 +24,6 @@ const LandingPage = () => {
 
       <section className="container border border-warning ">
         <Section1 />
-
         <div className="row mt-4 border border-danger">
           <div className="col-md-6 col-12 d-grid justify-content-center">
             <div className={style.imgWrapper2}>
