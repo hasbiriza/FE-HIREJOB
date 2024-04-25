@@ -9,26 +9,26 @@ import tokped from "@/assets/img/tokped.png";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 import axios from "axios";
-import { format, differenceInDays  } from 'date-fns';
 
-const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
-  const imageWidth = 100; // Replace with the actual width
-  const imageHeight = 100; // Replace with the actual height
-  
-  // const [pengalaman, setPengalaman] = useState([]);
+const ProfileIdDetail = ({ pekerja }) => {
+  const pengalaman = [
+    {
+      Posisi: "Frontend Developer",
+      Nama: "ABC Company",
+      Desc: "Developed user interface components and implemented them following well-known React.js workflows.",
+    },
+    {
+      Posisi: "UI/UX Designer",
+      Nama: "XYZ Corporation",
+      Desc: "Designed and implemented user interfaces for e-commerce websites.",
+    },
+  ];
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/api/v1/experience/data")
-  //     .then((res) => {
-  //       const allPengalaman = res.data.data;
-  //       // const filteredPengalaman = allPengalaman.filter(
-  //       //   (item) => item.UserId === pekerja.id
-  //       // );
-  //       setPengalaman(allPengalaman);
-  //     })
-  //     .catch((err) => console.error("Error fetching experiences:", err));
-  // }, []);
+  const portofolio = [
+    { Namaaplikasi: "Portfolio Website" },
+    { Namaaplikasi: "E-commerce App" },
+    { Namaaplikasi: "Social Media Dashboard" },
+  ];
 
   return (
     <>
@@ -42,9 +42,11 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
           position: "absolute",
         }}
       />
+
       <div className="container">
         <div style={{ marginTop: "80px", zIndex: "1", position: "relative" }}>
           <div className="row">
+
             {/* Kolom Kiri */}
             <div className="col-12 col-md-4">
               <div className="card rounded p-2 d-flex flex-column align-items-center">
@@ -55,22 +57,24 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                   height={100}
                   width={100}
                 />
-                <div style={{ width: "90%" }}>
+                <div
+                  style={{
+                    width: "90%",
+                  }}
+                >
                   <h3>{pekerja.Name}</h3>
-                  <h5>{pekerja.Position}</h5>
+                  <h5>{pekerja.Pekerjaan}</h5>
                   <h5>
                     <Image src={pinmap} alt="Pin Map" /> {pekerja.Address}
                   </h5>
                   <h5>{pekerja.Status}</h5>
                   <h5 className="mt-2 mb-3">{pekerja.Description}</h5>
                   <Link href="/hire">
-                    <Button
-                      className="w-100"
-                      style={{ backgroundColor: "#5E50A1", color: "white" }}
-                    >
+                    <Button className="w-100" style={{ backgroundColor: "#5E50A1", color: "white" }}>
                       Hire
                     </Button>
                   </Link>
+                  <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
             </div>
@@ -86,21 +90,19 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                           <Nav.Link eventKey="first">Portofolio</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">
-                            Pengalaman Kerja
-                          </Nav.Link>
+                          <Nav.Link eventKey="second">Pengalaman Kerja</Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Row>
                     <Tab.Content>
                       <Tab.Pane eventKey="first">
                         <div className="row gap-3 d-flex flex-row flex-wrap text-center mt-4">
-                          {project.map((item, index) => (
+                          {portofolio.map((item, index) => (
                             <div key={index} className="col">
                               <Card style={{ width: "219px" }}>
-                                <Image src={item.url} alt="Portfolio Image" />
+                                <Image src={f1} alt="Portfolio Image" />
                                 <Card.Body>
-                                  <Card.Title>{item.Name}</Card.Title>
+                                  <Card.Title>{item.Namaaplikasi}</Card.Title>
                                 </Card.Body>
                               </Card>
                             </div>
@@ -108,39 +110,18 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                         </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
-                      {pengalaman.map((item, index) => {
-                            const startDate = new Date(item.StartDate);
-                            const endDate = item.EndDate ? new Date(item.EndDate) : null;
-  
-                            const formattedStartDate = format(startDate, "dd MMMM yyyy");
-                            const formattedEndDate = endDate ? format(endDate, "dd MMMM yyyy") : "Present";
-  
-                            let duration = "";
-                            if (endDate) {
-                              const daysDifference = differenceInDays(endDate, startDate);
-                              duration = `${daysDifference} day${daysDifference > 1 ? "s" : ""}`;
-                            }
-
-                          return (
-                            <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap">
-                              <div className="col-2" style={{ paddingTop: "20px", textAlign: "center" }}>
-                                <Image
-                                  className="img-fluid"
-                                  src={item.url || tokped}
-                                  alt="Company Image"
-                                  width={100}
-                                  height={100}
-                                />
-                              </div>
-                              <div className="col-10">
-                                <h3>{item.Position}</h3>
-                                <p>{item.CompanyName}</p>
-                                <h4>{formattedStartDate} - {formattedEndDate} {duration}</h4>
-                                <p className="mt-3">{item.Description}</p>
-                              </div>
+                        {pengalaman.map((item, index) => (
+                          <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap">
+                            <div className="col-2" style={{ paddingTop: "20px", textAlign: "center" }}>
+                              <Image className="img-fluid" src={tokped} alt="Company Image" />
                             </div>
-                          );
-                        })}
+                            <div className="col-10">
+                              <h3>{item.Posisi}</h3>
+                              <h4>{item.Nama}</h4>
+                              <p className="mt-3">{item.Desc}</p>
+                            </div>
+                          </div>
+                        ))}
                       </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>
@@ -158,30 +139,15 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
   let pekerja = {};
-  let pengalaman = [];
-  let project = [];
+  let pengalaman = {}
 
   try {
-    const pekerjaResponse = await axios.get(
-      `http://localhost:8080/api/v1/user/${id}`
-    );
-    pekerja = pekerjaResponse.data.data;
+    const UserResponse = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
+    pekerja = UserResponse.data.data;
 
-    const pengalamanResponse = await axios.get(
-      `http://localhost:8080/api/v1/experience/data`
-    );
-    pengalaman = Array.isArray(pengalamanResponse.data.data)
-      ? pengalamanResponse.data.data.filter(
-          (item) => item.UserId === pekerja.id
-        )
-      : [];
+    const pengalamanResponse = await axios.get(`http://localhost:8080/api/v1/experience/${id}`);
+    pengalaman = pengalamanResponse.data.data;
 
-    const projectResponse = await axios.get(
-      `http://localhost:8080/api/v1/project/${id}`
-    );
-    project = Array.isArray(projectResponse.data.data)
-      ? projectResponse.data.data
-      : [];
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -190,7 +156,6 @@ export const getServerSideProps = async (context) => {
     props: {
       pekerja,
       pengalaman,
-      project,
     },
   };
 };
