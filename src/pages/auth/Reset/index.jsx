@@ -9,7 +9,7 @@ import ResetPassword from "@/components/Auth/ResetPassword";
 const Reset = () => {
   return (
     <div className=" container-fluid ">
-      <div class="row g-1 mt-2 ">
+      <div className="row g-1 mt-2 ">
         <Banner />
 
         <ResetPassword />

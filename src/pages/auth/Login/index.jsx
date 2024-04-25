@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <>
       <div className=" container-fluid  ">
-        <div class="row g-1 mt-2 ">
+        <div className="row g-1 mt-2 ">
           <Banner />
 
           <LoginForm/>

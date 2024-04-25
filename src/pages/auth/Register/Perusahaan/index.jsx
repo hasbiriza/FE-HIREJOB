@@ -5,7 +5,7 @@ import React from 'react'
 const RegisterPerusahaan = () => {
   return (
     <div className=" container-fluid ">
-        <div class="row g-1 mt-2 ">
+        <div className="row g-1 mt-2 ">
           <Banner/>
 
           <RegisterFormPerusahaan/>
