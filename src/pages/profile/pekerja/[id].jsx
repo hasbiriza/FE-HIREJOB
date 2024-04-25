@@ -10,8 +10,11 @@ import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 import axios from "axios";
 
-const ProfileIdDetail = ({ pekerja }) => {
-  const pengalaman = [
+const ProfileIdDetail = ({pekerja , pengalaman}) => {
+
+
+
+  const pengalamanDummy = [
     {
       Posisi: "Frontend Developer",
       Nama: "ABC Company",
@@ -69,7 +72,7 @@ const ProfileIdDetail = ({ pekerja }) => {
                   </h5>
                   <h5>{pekerja.Status}</h5>
                   <h5 className="mt-2 mb-3">{pekerja.Description}</h5>
-                  <Link href="/hire">
+                  <Link href={`/hire/${pekerja.ID}`}>
                     <Button className="w-100" style={{ backgroundColor: "#5E50A1", color: "white" }}>
                       Hire
                     </Button>
@@ -110,18 +113,39 @@ const ProfileIdDetail = ({ pekerja }) => {
                         </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
-                        {pengalaman.map((item, index) => (
-                          <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap">
-                            <div className="col-2" style={{ paddingTop: "20px", textAlign: "center" }}>
-                              <Image className="img-fluid" src={tokped} alt="Company Image" />
+                      {pengalaman.map((item, index) => {
+                            const startDate = new Date(item.StartDate);
+                            const endDate = item.EndDate ? new Date(item.EndDate) : null;
+  
+                            const formattedStartDate = format(startDate, "dd MMMM yyyy");
+                            const formattedEndDate = endDate ? format(endDate, "dd MMMM yyyy") : "Present";
+  
+                            let duration = "";
+                            if (endDate) {
+                              const daysDifference = differenceInDays(endDate, startDate);
+                              duration = `${daysDifference} day${daysDifference > 1 ? "s" : ""}`;
+                            }
+
+                          return (
+                            <div key={index} className="mt-4 mb-3 row d-flex flex-row flex-wrap">
+                              <div className="col-2" style={{ paddingTop: "20px", textAlign: "center" }}>
+                                <Image
+                                  className="img-fluid"
+                                  src={item.url || tokped}
+                                  alt="Company Image"
+                                  width={100}
+                                  height={100}
+                                />
+                              </div>
+                              <div className="col-10">
+                                <h3>{item.Position}</h3>
+                                <p>{item.CompanyName}</p>
+                                <h4>{formattedStartDate} - {formattedEndDate} {duration}</h4>
+                                <p className="mt-3">{item.Description}</p>
+                              </div>
                             </div>
-                            <div className="col-10">
-                              <h3>{item.Posisi}</h3>
-                              <h4>{item.Nama}</h4>
-                              <p className="mt-3">{item.Desc}</p>
-                            </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>
@@ -139,7 +163,7 @@ const ProfileIdDetail = ({ pekerja }) => {
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
   let pekerja = {};
-  let pengalaman = {}
+  let pengalaman = []
 
   try {
     const UserResponse = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
@@ -147,6 +171,23 @@ export const getServerSideProps = async (context) => {
 
     const pengalamanResponse = await axios.get(`http://localhost:8080/api/v1/experience/${id}`);
     pengalaman = pengalamanResponse.data.data;
+
+
+    // Memastikan pengalaman berupa array
+if (Array.isArray(pengalamanResponse.data.data)) {
+  // Memfilter pengalaman berdasarkan UserId
+  pengalaman = pengalamanResponse.data.data.filter(
+    (item) => item.UserId === pekerja.ID // Pastikan menggunakan properti yang benar
+  );
+} else {
+  pengalaman = [];
+}
+
+    // pengalaman = Array.isArray(pengalamanResponse.data.data)
+    //   ? pengalamanResponse.data.data.filter(
+    //       (item) => item.UserId === pekerja.id
+    //     )
+    //   : [];
 
   } catch (error) {
     console.error("Error fetching data:", error);
