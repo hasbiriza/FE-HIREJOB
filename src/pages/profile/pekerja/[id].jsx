@@ -100,7 +100,7 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                               <Card style={{ width: "219px" }}>
                                 <Image src={item.url} alt="Portfolio Image" />
                                 <Card.Body>
-                                  <Card.Title>{item.Name}</Card.Title>
+                                  <Card.Title>{item.Title}</Card.Title>
                                 </Card.Body>
                               </Card>
                             </div>
@@ -134,7 +134,7 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                               </div>
                               <div className="col-10">
                                 <h3>{item.Position}</h3>
-                                <p>{item.CompanyName}</p>
+                                <p>{item.CompanyName}</p> 
                                 <h4>{formattedStartDate} - {formattedEndDate} {duration}</h4>
                                 <p className="mt-3">{item.Description}</p>
                               </div>
@@ -177,7 +177,7 @@ export const getServerSideProps = async (context) => {
       : [];
 
     const projectResponse = await axios.get(
-      `http://localhost:8080/api/v1/project/${id}`
+      `http://localhost:8080/api/v1/project/data`
     );
     project = Array.isArray(projectResponse.data.data)
       ? projectResponse.data.data
