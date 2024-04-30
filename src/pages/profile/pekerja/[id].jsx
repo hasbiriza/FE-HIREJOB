@@ -11,7 +11,7 @@ import Image from "next/image";
 import axios from "axios";
 import { format, differenceInDays } from "date-fns";
 
-const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
+const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
   const imageWidth = 215; // Replace with the actual width
   const imageHeight = 100; // Replace with the actual height
 
@@ -56,6 +56,15 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project }) => {
                       Hire
                     </Button>
                   </Link>
+
+                  <h3 className="mt-3">Skill</h3>
+                  {/* <div className="row gap-3 mb-3 d-flex flex-row flex-wrap text-center" style={{ paddingRight: "20px" }}>
+                  {skill.map((item, index) => (
+                    <div key={index} className="col card" style={{ backgroundColor: "#fdd074" }}>
+                      {item.Name}
+                    </div>
+                  ))}
+                </div> */}
                 </div>
               </div>
             </div>
@@ -176,6 +185,9 @@ export const getServerSideProps = async (context) => {
     );
     pekerja = pekerjaResponse.data.data;
 
+
+
+
     const pengalamanResponse = await axios.get(
       `http://localhost:8080/api/v1/experience/data`
     );
@@ -203,6 +215,7 @@ export const getServerSideProps = async (context) => {
       pekerja,
       pengalaman,
       project,
+    
     },
   };
 };
