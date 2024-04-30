@@ -59,6 +59,40 @@ const EditPekerja = () => {
                   <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
+
+              <Button
+                href={"/auth/Register/Pekerja"}
+                className=" my-4 BgSecondaryColor w-100 "
+                type="submit"
+              >
+                Hire
+              </Button>
+
+              <Link
+                href="/auth/Register/Pekerja"
+                className="btn y w-100"
+                style={{
+                  border: "1px solid #5e50a1",
+                  textAlign: "center",
+                  color: "#5e50a1",
+                }}
+              >
+                Batal
+              </Link>
+
+              {/* <Button
+                href={"/auth/Register/Pekerja"}
+                className=" w-100 "
+                style={{
+                  border: "1px solid #5e50a1 !important",
+                  textAlign: "center !important",
+                  color: "#5e50a1 !important"
+                }}
+                
+                type="submit"
+              >
+                Batal
+              </Button> */}
             </div>
 
             {/* Kolom Kanan Baru */}
@@ -150,7 +184,10 @@ const EditPekerja = () => {
 
                 <div className="border border-danger ">
                   <Form className="border border-danger d-flex flex-row align-items-center ">
-                    <Form.Group className="mx-3 w-75 " controlId="formBasicSkiil">
+                    <Form.Group
+                      className="mx-3 w-75 "
+                      controlId="formBasicSkiil"
+                    >
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Skill"
@@ -167,7 +204,6 @@ const EditPekerja = () => {
                     >
                       Simpan
                     </Button>
-                    
                   </Form>
                 </div>
               </div>
@@ -189,37 +225,42 @@ const EditPekerja = () => {
                 <div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                      <Form.Label className="text-muted">
-                        Posisi
-                      </Form.Label>
+                      <Form.Label className="text-muted">Posisi</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Posisi"
                         required
                       />
                     </Form.Group>
-
                     <div className=" d-flex flex-row justify-content-between ">
-                      
-                    <Form.Group className="mb-3 w-50 " controlId="formBasicjobdesk">
-                      <Form.Label className=" text-muted ">Nama Perusahaan</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Masukan Nama Perusahaan"
-                        required
+                      <Form.Group
+                        className="mb-3 w-50 "
+                        controlId="formBasicjobdesk"
+                      >
+                        <Form.Label className=" text-muted ">
+                          Nama Perusahaan
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Masukan Nama Perusahaan"
+                          required
                         />
-                    </Form.Group>
+                      </Form.Group>
 
-                    <Form.Group className="mb-3 w-50 ms-3" controlId="formBasicDomisili">
-                      <Form.Label className=" text-muted ">Bulan/Tahun</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Masukkan Nama Bulan/tahun"
-                        required
-                      />
-                    </Form.Group>
-                      </div>
-
+                      <Form.Group
+                        className="mb-3 w-50 ms-3"
+                        controlId="formBasicDomisili"
+                      >
+                        <Form.Label className=" text-muted ">
+                          Bulan/Tahun
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Masukkan Nama Bulan/tahun"
+                          required
+                        />
+                      </Form.Group>
+                    </div>
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlTextarea1"
@@ -231,15 +272,15 @@ const EditPekerja = () => {
                         placeholder="Tuliskan deskripsi singkat"
                       />
                     </Form.Group>
-
-
-                    <Button className="w-100" variant="outline-warning">Tambah Pengalaman Kerja</Button>{' '}
+                    <Button className="w-100" variant="outline-warning">
+                      Tambah Pengalaman Kerja
+                    </Button>{" "}
                   </Form>
                 </div>
               </div>
 
-               {/* Portofolio */}
-               <div
+              {/* Portofolio */}
+              <div
                 className="d-flex flex-column rounded  p-5 mt-5 "
                 style={{
                   width: "90%",
@@ -248,7 +289,7 @@ const EditPekerja = () => {
                 }}
               >
                 <div>
-                  <h2>Pengalaman Kerja</h2>
+                  <h2>Portofolio</h2>
                   <hr />
                 </div>
 
@@ -264,37 +305,47 @@ const EditPekerja = () => {
                         required
                       />
                     </Form.Group>
-
-                    <Form.Group className="mb-3 w-50 " controlId="formBasicjobdesk">
-                      <Form.Label className=" text-muted ">Link Repository</Form.Label>
+                    <Form.Group
+                      className="mb-3 w-50 "
+                      controlId="formBasicjobdesk"
+                    >
+                      <Form.Label className=" text-muted ">
+                        Link Repository
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Masukan Link Repository"
                         required
-                        />
-                    </Form.Group>
-
-                    
-
-                    <Form.Group
-                      className="mb-3"
-                      controlId="exampleForm.ControlTextarea1"
-                    >
-                      <Form.Label>Deskripsi singkat</Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        rows={5}
-                        placeholder="Tuliskan deskripsi singkat"
                       />
                     </Form.Group>
+                    <Form className="mb-3">
+                      <Form.Check
+                        className=" shadow-sm"
+                        inline
+                        label="Aplikasi Mobile"
+                        name="group1"
+                        type="radio"
+                      />
 
+                      <Form.Check
+                        className=" shadow-sm"
+                        inline
+                        label="Aplikasi Web"
+                        name="group1"
+                        type="radio"
+                      />
 
-                    <Button className="w-100" variant="outline-warning">Tambah Pengalaman Kerja</Button>{' '}
+                      <Form.Group controlId="formFile" className="my-5">
+                        <Form.Label>Default file input example</Form.Label>
+                        <Form.Control type="file" />
+                      </Form.Group>
+                    </Form>
+                    <Button className="w-100" variant="outline-warning">
+                      Tambah Portofolio
+                    </Button>{" "}
                   </Form>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>

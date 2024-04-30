@@ -11,6 +11,7 @@ import axios from "axios";
 
 const Hire = () => {
   const [users, setUsers] = useState([]);
+  const [skills, setSkills] = useState([]);
   const router = useRouter()
 
   useEffect(() => {
@@ -23,7 +24,23 @@ const Hire = () => {
       .catch((err) => {
         console.error("Error fetching users:", err);
       });
-  }, [router.query.id]); //
+
+     axios
+      .get(`http://localhost:8080/api/v1/skill/data`) 
+      .then((res) => {
+        const skillData = Array.isArray(res.data.data)
+          ? res.data.data.filter((item) => item.UserId === users.ID)
+          : [];
+        setSkills(skillData);
+      })
+      .catch((err) => {
+        console.error("Error fetching skills:", err);
+      }); 
+
+    }, [router.query.id, users.ID]); //
+
+ 
+
   
 
   return (
@@ -64,6 +81,13 @@ const Hire = () => {
                     {users.Description}
                   </h6>
                   <h3 className="mt-3">Skill</h3>
+                  <div className="row gap-2 mb-3 text-center " >
+                  {skills.map((skill, index) => (
+                    <div key={index} className="card w-auto " style={{ backgroundColor: "#fdd074" }}>
+                      {skill.Name}
+                    </div>
+                  ))}
+                </div>
                 </div>
               </div>
             </div>

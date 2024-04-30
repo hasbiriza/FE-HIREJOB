@@ -10,6 +10,13 @@ import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 import axios from "axios";
 import { format, differenceInDays } from "date-fns";
+import {
+  FaMapMarkerAlt,
+  FaInstagram,
+  FaLinkedin,
+  FaRegEnvelope,
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
   const imageWidth = 215; // Replace with the actual width
@@ -58,13 +65,32 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
                   </Link>
 
                   <h3 className="mt-3">Skill</h3>
-                  {/* <div className="row gap-3 mb-3 d-flex flex-row flex-wrap text-center" style={{ paddingRight: "20px" }}>
+                 
+                  <div className="row gap-2 mb-3 text-center " >
                   {skill.map((item, index) => (
-                    <div key={index} className="col card" style={{ backgroundColor: "#fdd074" }}>
+                    <div key={index} className="card w-auto " style={{ backgroundColor: "#fdd074" }}>
                       {item.Name}
                     </div>
                   ))}
-                </div> */}
+                </div>
+
+                <div className="mb-5">
+            <div className="text-secondary mt-4 ">
+              <FaRegEnvelope /> <small className="ms-1">{pekerja.Email}</small>
+            </div>
+
+            <div className="text-secondary mt-1">
+              <FaInstagram /> <small className="ms-1">{pekerja.Instagram}</small>
+            </div>
+
+            <div className="text-secondary mt-1">
+              <FaPhoneAlt /> <small className="ms-1">{pekerja.PhoneNumber}</small>
+            </div>
+
+            <div className="text-secondary mt-1 mb-5">
+              <FaLinkedin /> <small className="ms-1">{pekerja.Linkedin}</small>
+            </div>
+          </div>
                 </div>
               </div>
             </div>
@@ -178,12 +204,24 @@ export const getServerSideProps = async (context) => {
   let pekerja = {};
   let pengalaman = [];
   let project = [];
+  let skill = [];
 
   try {
     const pekerjaResponse = await axios.get(
       `http://localhost:8080/api/v1/user/${id}`
     );
     pekerja = pekerjaResponse.data.data;
+
+
+    const skillResponse = await axios.get(
+      `http://localhost:8080/api/v1/skill/data`
+    );
+
+    skill = Array.isArray(skillResponse.data.data)
+      ? skillResponse.data.data.filter(
+          (item) => item.UserId === pekerja.ID
+        )
+      : [];
 
   
 
@@ -216,6 +254,7 @@ export const getServerSideProps = async (context) => {
       pekerja,
       pengalaman,
       project,
+      skill
     
     },
   };

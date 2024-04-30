@@ -1,4 +1,4 @@
-import styles from "./perekrut.module.css";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
