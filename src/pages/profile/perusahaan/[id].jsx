@@ -1,13 +1,12 @@
-import styles from "./perekrut.module.css";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import Navbar1 from "@/components/Navbar/Navbar";
-import Image from "next/image"; // Import Image dari next/image
-import miniprofile from "@/assets/img/miniprofile.png";
+import React from "react";
 import pp from "@/assets/img/Harry.png";
+import Navbar1 from "@/components/Navbar/Navbar"; // Import Navbar1
+import { Button, Card, Nav, Row, Tab } from "react-bootstrap";
+import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
-import { Button } from "react-bootstrap";
+import Image from "next/image";
+import axios from "axios";
+import { format, differenceInDays } from "date-fns";
 import {
   FaMapMarkerAlt,
   FaInstagram,
@@ -15,32 +14,13 @@ import {
   FaRegEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
-import axios from "axios";
-import { useRouter } from "next/router";
 
-const ProfilePerekrut = () => {
-  const router = useRouter();
-  const [user, setUser] = useState([]);
-  const { id } = router.query;
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/v1/user/${router.query.id}`)
-      .then((res) => {
-        const perusahaanData = res.data.data;
-        setUser(perusahaanData);
-        console.log(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [router.query.id]); // Empty dependency array to run once on mount
-
+const ProfilePerekrut = ({ user }) => {
   return (
     <>
       <Navbar1 />
       <div
-        className="container d-flex flex-column align-items-center "
+        className="container d-flex flex-column align-items-center"
         style={{
           marginBottom: "20vh",
           marginTop: "10vh",
@@ -56,56 +36,47 @@ const ProfilePerekrut = () => {
             width: "101.95%",
             height: "20vh",
             zIndex: "0",
-            position: "",
           }}
         />
         <Image
           src={pp}
-          alt="pp"
-          className="mt-3 mb-5 img-fluid position-absolute "
-          style={{
-            top: "27vh",
-          }}
+          alt="Profile Picture"
+          className="mt-3 mb-5 img-fluid position-absolute"
+          style={{ top: "27vh" }}
         />
         <div
           style={{ marginTop: "12vh" }}
-          className=" w-75 d-flex flex-column align-items-center "
+          className="w-75 d-flex flex-column align-items-center"
         >
-          <h3 className=" d-block ">{user.Name}</h3>
-
+          <h3>{user.Name}</h3>
           <div>
             <small>
               <FaMapMarkerAlt /> {user.Address}
             </small>
           </div>
-
           <div className="my-2">
-            <small>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero
-              consectetur natus quo nihil illum ea!
-            </small>
+            <small>{user.Description}</small>
           </div>
 
           <Button className="editprofilebutton w-25 BgSecondaryColor mt-2">
             Edit Profile
           </Button>
 
-          {/* Bagian2 Logo */}
           <div className="mb-5">
-            <div className="text-secondary mt-4 ">
-              <FaRegEnvelope /> <small className="ms-1">Email</small>
+            <div className="text-secondary mt-4">
+              <FaRegEnvelope /> <small>{user.Email}</small>
             </div>
 
             <div className="text-secondary mt-1">
-              <FaInstagram /> <small className="ms-1">Instagram</small>
+              <FaInstagram /> <small>{user.Instagram}</small>
             </div>
 
             <div className="text-secondary mt-1">
-              <FaPhoneAlt /> <small className="ms-1">Phone Number</small>
+              <FaPhoneAlt /> <small>{user.PhoneNumber}</small>
             </div>
 
             <div className="text-secondary mt-1 mb-5">
-              <FaLinkedin /> <small className="ms-1">LinkedIn</small>
+              <FaLinkedin /> <small>{user.LinkedIn}</small>
             </div>
           </div>
         </div>
@@ -113,6 +84,27 @@ const ProfilePerekrut = () => {
       <Footer />
     </>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+
+  let user = {};
+
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/user/${id}`
+    );
+    user = response.data.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+
+  return {
+    props: {
+      user,
+    },
+  };
 };
 
 export default ProfilePerekrut;
