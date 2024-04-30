@@ -43,7 +43,7 @@ const Hire = () => {
             <div className="col-12 col-md-4">
               <div className="card rounded p-2 d-flex flex-column align-items-center">
                 <Image
-                  src={pp}
+                  src={users.photo}
                   alt="Profile Picture"
                   className="my-3 img-fluid"
                   height={100}
@@ -54,17 +54,15 @@ const Hire = () => {
                     width: "90%",
                   }}
                 >
-                  {JSON.stringify(users)}
-                  {/* <h3>{pekerja.Name}</h3>
-                  <h5>{pekerja.Name}</h5> */}
-                  <h5>
-                    <Image src={pinmap} alt="Pin Map" /> Cek123
-                  </h5>
-                  <h5>Web</h5>
-                  <h5 className="mt-2 mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Consequatur, veniam!
-                  </h5>
+                  {/* {JSON.stringify(users)} */}
+                  <h3>{users.Name}</h3>
+                  <h6 className="text-muted">
+                    <Image src={pinmap} alt="Pin Map" /> {users.Address}
+                  </h6>
+                  {/* <h5>Web</h5> */}
+                  <h6 className="my-4 text-muted ">
+                    {users.Description}
+                  </h6>
                   <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
@@ -73,8 +71,8 @@ const Hire = () => {
             {/* Kolom Kanan Baru */}
             <div className="col-12 col-md-8 d-flex justify-content-center align-items-center border border-danger ">
               <div
-                className="d-flex flex-column border border-info   "
-                style={{ width: "90%", height: "95vh" }}
+                className="d-flex flex-column border border-info h-auto "
+                style={{ width: "90%",}}
               >
                 <div>
                   <h2>Halo, Pewpeople</h2>
@@ -156,16 +154,6 @@ const Hire = () => {
                     >
                       Hire
                     </Button>
-                    <p className=" text-center ">
-                      {" "}
-                      Anda belum punya akun?{" "}
-                      <Link
-                        className="text-decoration-none PrimaryColor"
-                        href={"/auth/Register/Pekerja"}
-                      >
-                        Daftar disini
-                      </Link>{" "}
-                    </p>
                   </Form>
                 </div>
               </div>
