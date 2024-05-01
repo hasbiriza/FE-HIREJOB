@@ -24,22 +24,37 @@ const index = () => {
       <Swiper
         navigation={true}
         
-        centeredSlides={true}
+        // centeredSlides={true}
         loop={true}
         autoplay={{
           delay: 2000,
           disableOnInteraction: true,
         }}
         spaceBetween={10}
-        slidesPerView={3}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+        breakpoints={{
+          300: {
+            slidesPerView: 1,
+          }, 
+
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          980: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
+
         pagination={{
           clickable: true,
           dynamicBullets: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
+        
       >
         <SwiperSlide>
           <div
@@ -63,9 +78,7 @@ const index = () => {
               <p style={{ color: "#9EA0A5" }}>Web Developer</p>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                iusto quae non eligendi obcaecati atque esse molestiae
-                reprehenderit aliquid? Laudantium iure aperiam mollitia
-                perspiciatis sequi vero natus officiis quae quis.
+                iusto quae non eligendi obcaecati 
               </p>
             </div>
           </div>

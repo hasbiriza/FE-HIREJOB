@@ -5,9 +5,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from '@/assets/img/icon.png';
 import Link from 'next/link'; // import NextLink from Next.js
 import { Button } from 'react-bootstrap';
-import styles from "./Navbar.module.css"; // import CSS module
+import styles from "./Navbar.module.css"; // import s module
 
-function Navbar1() {
+function NavbarLogin() {
   return (
     <Navbar expand="lg" className="bg-body-light border border-warning">
       <Container className='border border-info'>
@@ -18,13 +18,13 @@ function Navbar1() {
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ">
-          <Nav className="ms-lg-auto ">
+          <Nav className=" ms-lg-auto  ">
             <Link href="/auth/Login">
-              <Button variant="outline-success" className={`me-2 ${styles.Login} w-100  `}>Masuk</Button>
+              <Button variant="outline-success" className={`me-2 ${styles.Login} w-100 `}>Masuk</Button>
             </Link>
             {/* d-lg-inline-block d-block w-100 */}
             <Link href="/auth/Register/Pekerja">
-              <Button className={`ms-lg-3 ${styles.Register} w-100`}>Daftar</Button>
+              <Button className={`${styles.Register} ms-lg-3  w-100`}>Daftar</Button>
             </Link>
           </Nav>
         </Navbar.Collapse>
@@ -33,4 +33,4 @@ function Navbar1() {
   );
 }
 
-export default Navbar1;
+export default NavbarLogin;

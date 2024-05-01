@@ -3,6 +3,14 @@ import { Form, Button } from "react-bootstrap";
 import Link from "next/link";
 
 const LoginForm = () => {
+
+  const handleSubmit = () => {
+    alert("Submit form")
+  }
+
+
+
+
   return (
     
       <div className=" col-sm-12 col-md-6 col-lg-6 col-12 d-flex justify-content-center align-items-center">
