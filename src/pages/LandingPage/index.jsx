@@ -18,11 +18,12 @@ import Section1 from "@/components/LandingPage/Section1";
 
 const LandingPage = () => {
 
-
 const [token, setToken] = useState("")
+const [userid, setUserid] = useState("") 
 useEffect (() => {
   setToken(localStorage.getItem("token"))
-},[token])
+  setUserid(localStorage.getItem("User_ID"))
+},[token,userid])
 
   return (
     <>

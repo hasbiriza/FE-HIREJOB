@@ -3,9 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '@/assets/img/icon.png';
+import loginface from '@/assets/img/loginface.png' 
 import Link from 'next/link'; // import NextLink from Next.js
-import { Button } from 'react-bootstrap';
-import styles from "./Navbar.module.css"; // import s module
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { MdOutlineMail } from "react-icons/md";
 
 function NavbarLogin() {
   return (
@@ -20,12 +21,17 @@ function NavbarLogin() {
         <Navbar.Collapse id="basic-navbar-nav ">
           <Nav className=" ms-lg-auto  ">
             <Link href="/auth/Login">
-              <Button variant="outline-success" className={`me-2 ${styles.Login} w-100 `}>Masuk</Button>
+            <IoMdNotificationsOutline size={27} color="gray" className='me-4 mt-1'/>
             </Link>
-            {/* d-lg-inline-block d-block w-100 */}
+            
             <Link href="/auth/Register/Pekerja">
-              <Button className={`${styles.Register} ms-lg-3  w-100`}>Daftar</Button>
+            <MdOutlineMail size={27} color="gray" className='me-4 mt-1'/>
             </Link>
+
+            <Link href="/profile/edit/pekerja">
+            <Image src={loginface} alt='loginface'/>
+            </Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

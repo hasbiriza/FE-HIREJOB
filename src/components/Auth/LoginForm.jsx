@@ -15,9 +15,10 @@ const LoginForm = () => {
 const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://locahost:8080/api/v1/login/${formdata}`)
+      .post(`http://localhost:8080/api/v1/login/`, formdata)
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("User_ID", res.data.User_ID);
       })
       .catch((err) => {
         console.error("Error Login", err);
