@@ -6,7 +6,7 @@ import Image from "next/image";
 import style from "./LandingPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import NavbarLogin from "@/components/NavbarLogin/NavbarLogin";
@@ -17,6 +17,13 @@ import Section1 from "@/components/LandingPage/Section1";
 // LandingPage//
 
 const LandingPage = () => {
+
+
+const [token, setToken] = useState("")
+useEffect (() => {
+  setToken(localStorage.getItem("token"))
+},[token])
+
   return (
     <>
       <Navbar />

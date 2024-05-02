@@ -60,15 +60,7 @@ const EditPekerja = () => {
                 </div>
               </div>
 
-              <Button
-                href={"/auth/Register/Pekerja"}
-                className=" my-4 BgSecondaryColor w-100 "
-                type="submit"
-              >
-                Hire
-              </Button>
-
-              <Link
+              {/* <Link
                 href="/auth/Register/Pekerja"
                 className="btn y w-100"
                 style={{
@@ -78,7 +70,7 @@ const EditPekerja = () => {
                 }}
               >
                 Batal
-              </Link>
+              </Link> */}
 
               {/* <Button
                 href={"/auth/Register/Pekerja"}
@@ -164,6 +156,13 @@ const EditPekerja = () => {
                         placeholder="Tuliskan deskripsi singkat"
                       />
                     </Form.Group>
+
+                    <Button
+                      className=" my-4 BgSecondaryColor w-100 "
+                      type="submit"
+                    >
+                      Simpan
+                    </Button>
                   </Form>
                 </div>
               </div>
@@ -196,7 +195,6 @@ const EditPekerja = () => {
                     </Form.Group>
 
                     <Button
-                      href={"/auth/Register/Pekerja"}
                       className=" my-4 w-auto"
                       variant="warning"
                       type="submit"
@@ -213,7 +211,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5 mt-5 "
                 style={{
                   width: "90%",
-                  height: "75vh",
+                  height: "70vh",
                   backgroundColor: "#FFFFFF",
                 }}
               >
@@ -232,35 +230,32 @@ const EditPekerja = () => {
                         required
                       />
                     </Form.Group>
-                    <div className=" d-flex flex-row justify-content-between ">
-                      <Form.Group
-                        className="mb-3 w-50 "
-                        controlId="formBasicjobdesk"
-                      >
-                        <Form.Label className=" text-muted ">
-                          Nama Perusahaan
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Masukan Nama Perusahaan"
-                          required
-                        />
-                      </Form.Group>
-
-                      <Form.Group
-                        className="mb-3 w-50 ms-3"
-                        controlId="formBasicDomisili"
-                      >
-                        <Form.Label className=" text-muted ">
-                          Bulan/Tahun
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Masukkan Nama Bulan/tahun"
-                          required
-                        />
-                      </Form.Group>
-                    </div>
+                    <Form.Group
+                      className="mb-3 w-50 "
+                      controlId="formBasicjobdesk"
+                    >
+                      <Form.Label className=" text-muted ">
+                        Nama Perusahaan
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Masukan Nama Perusahaan"
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 w-50"
+                      controlId="formBasicDomisili"
+                    >
+                      <Form.Label className=" text-muted ">
+                        Bulan/Tahun
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Masukkan Nama Bulan/tahun"
+                        required
+                      />
+                    </Form.Group>
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlTextarea1"
@@ -284,7 +279,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5 mt-5 "
                 style={{
                   width: "90%",
-                  height: "75vh",
+                  height: "70vh",
                   backgroundColor: "#FFFFFF",
                 }}
               >
