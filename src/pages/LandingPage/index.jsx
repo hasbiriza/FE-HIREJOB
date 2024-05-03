@@ -27,7 +27,7 @@ useEffect (() => {
 
   return (
     <>
-      <Navbar />
+      {token && userid ? <NavbarLogin User_ID={userid} /> : <Navbar />}
       {/* Batas Navbar */}
 
       <section className="container border border-warning ">

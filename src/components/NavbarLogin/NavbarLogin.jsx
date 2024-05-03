@@ -1,101 +1,140 @@
-import { faBuilding, faMailBulk, faBell, faRightFromBracket, faGear, faLongArrowAltLeft, faMailForward, faEdit, faLongArrowAltUp, faPowerOff, faChartBar, faVoicemail, faMailReply } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import style from "./Navbar.module.css";
-import img from "../../assets/img/LoginFace.png";
-import img2 from "../../assets/img/icon.png";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import logo from "@/assets/img/icon.png";
+import loginface from "@/assets/img/loginface.png";
+import Link from "next/link"; 
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { MdOutlineMail } from "react-icons/md";
+import { useState, useEffect } from "react"; // Correctly import useState
+import axios from "axios";
+import getServerSideProps from 'next/head';
 
+function NavbarLogin({ user }) { // Receive user as prop
 
-const NavbarLogin = () => {
-  const [id, setId] = useState("");
-  const [idwork, setIdWork] = useState("");
-  const [role, setRole] = useState("");
-  const router = useRouter();
-
-  useEffect(() => {
-    setId(localStorage.getItem("idPofile"));
-    setIdWork(localStorage.getItem("idwork"));
-    setRole(localStorage.getItem("role"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
-  const clearLocal = () => {
-    localStorage.clear();
-
-    router.push("/");
-    window.location.reload();
-  };
+  // No useEffect needed for initial fetch with SSR
 
   return (
-    <>
-      <>
-        {/* Hello world */}
-        <nav className=" container navbar navbar-expand-lg navbar-light bg-light">
-          <Link className="  navbar-brand" href={"/"}>
-            <Image src={img2} alt="photo3"></Image>
-          </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto"></ul>
-            <form className="form-inline d-flex my-2 my-lg-0">
-              <button className={`mr-3 ${style.notif}`} style={{ marginRight: "5px", fontSize: 25, color: "#5E50A1", height: 40 }}>
-                <FontAwesomeIcon icon={faBell} />{" "}
-              </button>
-              <button className={`mr-3 ${style.message}`} style={{ marginRight: "5px", fontSize: 25, color: "#5E50A1", height: 40 }}>
-                <FontAwesomeIcon icon={faMailBulk} />{" "}
-              </button>
-              {role === "rekruter" ? (
-                <Link href={`/Company/${id} `}>
-                  <div className="btn-group dropdown-center">
-                    <Image className={`${style.img} img-fluid`} alt="photo1" src={img} style={{ marginRight: "5px", fontSize: 25, color: "#5E50A1", height: 40 }} />
-                  </div>
-                </Link>
-              ) : (
-                <Link href={`/ProfileWork/${id} `}>
-                  <div className="btn-group dropdown-center">
-                    <Image className={`${style.img} img-fluid`} alt="photo2" src={img} style={{ marginRight: "5px", fontSize: 25, color: "#5E50A1", height: 40 }} />
-                  </div>
-                </Link>
-              )}
-              <div className="btn-group dropdown-center">
-                <button type="button" className={`dropdown-toggle  dropdown-toggle-split ${style["dropdown-toggle-split"]} ${style.toggleSplit}`} data-bs-toggle="dropdown" aria-expanded="false">
-                  <span className="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul className={`dropdown-menu ${style.drop}`}>
-                  <li>
-                    <Link className="dropdown-item" href={"/"} onClick={clearLocal}>
-                      <FontAwesomeIcon icon={faPowerOff} /> Logout
-                    </Link>
-                  </li>
-                  {role === "rekruter" ? (
-                    <li>
-                      <Link className="dropdown-item" href={`/ProfileRekrut/${id} `}>
-                        <FontAwesomeIcon icon={faEdit} /> Edit Profile
-                      </Link>
-                    </li>
-                  ) : (
-                    <li>
-                      <Link className="dropdown-item" href={`/Profile/${id} `}>
-                        <FontAwesomeIcon icon={faEdit} /> Edit Profile
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            </form>
-          </div>
-        </nav>
-      </>
-    </>
+    <Navbar expand="lg" className="bg-body-light border border-warning">
+      <Container className="border border-info">
+        <Link href="/LandingPage">
+          <Navbar.Brand>
+            <Image src={logo} alt="logo" />
+          </Navbar.Brand>
+        </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav ">
+          <Nav className=" ms-lg-auto  ">
+            <Link href="/auth/Login">
+              <IoMdNotificationsOutline
+                size={27}
+                color="gray"
+                className="me-4 mt-1"
+              />
+            </Link>
+
+            <Link href="/auth/Register/Pekerja">
+              <MdOutlineMail size={27} color="gray" className="me-4 mt-1" />
+            </Link>
+
+            <Link href="/profile/edit/pekerja">
+              <Image src={loginface} alt="loginface" />
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-};
+}
+
+export async function getServerSideProps(context) {
+  const userid = context.params.userid; // Get userid from context if needed
+
+  try {
+    const res = await axios.get(`http://localhost:8080/api/v1/user/${userid}`);
+    const user = res.data.data;
+
+    return {
+      props: {
+        user, 
+      },
+    };
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    return {
+      props: {
+        user: null, 
+      },  
+    };
+  }
+}
 
 export default NavbarLogin;
+
+
+
+
+// import Image from "next/image";
+// import Container from "react-bootstrap/Container";
+// import Nav from "react-bootstrap/Nav";
+// import Navbar from "react-bootstrap/Navbar";
+// import logo from "@/assets/img/icon.png";
+// import loginface from "@/assets/img/loginface.png";
+// import Link from "next/link"; // import NextLink from Next.js
+// import { IoMdNotificationsOutline } from "react-icons/io";
+// import { MdOutlineMail } from "react-icons/md";
+// import { useEffect } from "react";
+// import axios from "axios";
+// import getServerSideProps from 'next/head';
+
+
+// function NavbarLogin({ userid }) {
+//   const [user, setUser] = [];
+
+//   useEffect(() => {
+//     axios
+//       .get(`http://localhost:8080/api/v1/user/${userid}`)
+//       .then((res) => {
+//         const user = res.data.data;
+//         setUser(user);
+//       })
+//       .catch((err) => {
+//         console.error("Error fetching users:", err);
+//       });
+//   }, );
+
+//   return (
+//     <Navbar expand="lg" className="bg-body-light border border-warning">
+//       <Container className="border border-info">
+//         <Link href="/LandingPage">
+//           <Navbar.Brand>
+//             <Image src={logo} alt="logo" />
+//           </Navbar.Brand>
+//         </Link>
+//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav ">
+//           <Nav className=" ms-lg-auto  ">
+//             <Link href="/auth/Login">
+//               <IoMdNotificationsOutline
+//                 size={27}
+//                 color="gray"
+//                 className="me-4 mt-1"
+//               />
+//             </Link>
+
+//             <Link href="/auth/Register/Pekerja">
+//               <MdOutlineMail size={27} color="gray" className="me-4 mt-1" />
+//             </Link>
+
+//             <Link href="/profile/edit/pekerja">
+//               <Image src={loginface} alt="loginface" />
+//             </Link>
+//           </Nav>
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar>
+//   );
+// }
+
+// export default NavbarLogin;

@@ -8,6 +8,7 @@ import pp from "@/assets/img/Harry.png";
 import pinmap from "@/assets/img/pinmap.png";
 
 const EditPekerja = () => {
+
   return (
     <div
       className="full-page-backgorund"
@@ -313,7 +314,7 @@ const EditPekerja = () => {
                         required
                       />
                     </Form.Group>
-                    <Form className="mb-3">
+                    <Form.Group className="mb-3">
                       <Form.Check
                         className=" shadow-sm"
                         inline
@@ -334,7 +335,7 @@ const EditPekerja = () => {
                         <Form.Label>Default file input example</Form.Label>
                         <Form.Control type="file" />
                       </Form.Group>
-                    </Form>
+                    </Form.Group>
                     <Button className="w-100" variant="outline-warning">
                       Tambah Portofolio
                     </Button>{" "}

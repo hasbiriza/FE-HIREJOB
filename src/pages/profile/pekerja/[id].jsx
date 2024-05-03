@@ -18,6 +18,7 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 
+
 const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
   const imageWidth = 215; // Replace with the actual width
   const imageHeight = 100; // Replace with the actual height
