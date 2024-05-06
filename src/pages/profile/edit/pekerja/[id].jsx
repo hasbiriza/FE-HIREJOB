@@ -6,8 +6,145 @@ import Link from "next/link";
 import { Button, Form } from "react-bootstrap";
 import pp from "@/assets/img/Harry.png";
 import pinmap from "@/assets/img/pinmap.png";
+import axios from "axios";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const EditPekerja = () => {
+  const [user, setUser] = useState({});
+  const [endDate, setEndDate] = useState(new Date()); // State untuk menyimpan tanggal akhir bekerja
+  const [startDate, setStartDate] = useState(new Date()); // State untuk menyimpan tanggal
+
+  useEffect(() => {
+    const user = localStorage.getItem("userid");
+    axios
+      .get(`http://localhost:8080/api/v1/user/${user}`)
+      .then((res) => {
+        const userid = res.data.data;
+        setUser(userid);
+        console.log(userid);
+      })
+      .catch((err) => {
+        console.error("Error fetching users:", err);
+      });
+  }, []);
+
+  // Skill Formik
+  const formikSkill = useFormik({
+    initialValues: {
+      Name: "",
+    },
+    onSubmit: async (values) => {
+      const userID = parseInt(localStorage.getItem("userid"));
+      const updatedValues = {
+        ...values, // Gabungkan values yang ada dengan
+        UserId: userID, // Properti UserID baru
+      };
+
+      console.log(updatedValues); // Log the value of updatedValues
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/v1/skill/create",
+          updatedValues
+        );
+        console.log(response);
+        if (response.status === 200) {
+          alert(`Pendaftaran Skill berhasil: ${response.data.Message}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan saat melakukan pendaftaran");
+      }
+    },
+  });
+
+  const handleFormSkill = (event) => {
+    const { target } = event;
+    formikSkill.setFieldValue(target.name, target.value);
+  };
+  // Akhir Skill Formik
+
+  // Pengalaman Kerja Formik
+  const formikPengalaman = useFormik({
+    initialValues: {
+      Position: "",
+      StartDate: "",
+      EndDate: "",
+      Description: "",
+      CompanyName: "",
+    },
+    onSubmit: async (values) => {
+      const userID = parseInt(localStorage.getItem("userid"));
+      const updatedValues = {
+        ...values, // Gabungkan values yang ada dengan
+        UserId: userID, // Properti UserID baru
+      };
+
+      console.log(updatedValues); // Log the value of updatedValues
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/v1/experience/create",
+          updatedValues
+        );
+        console.log(response);
+        if (response.status === 200) {
+          alert(`Pendaftaran Experience berhasil: ${response.data.Message}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan saat melakukan pendaftaran");
+      }
+    },
+  });
+
+  const handleFormPengalaman = (event) => {
+    const { target } = event;
+    formikPengalaman.setFieldValue(target.name, target.value);
+  };
+  // Akhir Pengalaman Kerja Formik
+
+  // Portofolio Formik
+
+  const FormikPortofolio = useFormik({
+    initialValues: {
+      Title: "",
+      Repository: "",
+      ProjectType: "",
+    },
+    onSubmit: async (values) => {
+      const userID = parseInt(localStorage.getItem("userid"));
+      const updatedValues = {
+        ...values, // Gabungkan values yang ada dengan
+        UserId: userID, // Properti UserID baru
+      };
+
+      console.log(updatedValues); // Log the value of updatedValues
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/v1/project/create",
+          updatedValues
+        );
+        console.log(response);
+        if (response.status === 200) {
+          alert(`Pendaftaran Portofolio berhasil: ${response.data.Message}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan saat melakukan pendaftaran");
+      }
+    },
+  });
+
+  const handleFormProject = (event) => {
+    const { target } = event;
+    FormikPortofolio.setFieldValue(target.name, target.value);
+  };
+  // Akhir Portofolio Formik
 
   return (
     <div
@@ -36,7 +173,7 @@ const EditPekerja = () => {
             <div className="col-12 col-md-4">
               <div className="card rounded p-2 d-flex flex-column align-items-center">
                 <Image
-                  src={pp}
+                  src={user.photo || pp}
                   alt="Profile Picture"
                   className="my-3 img-fluid"
                   height={100}
@@ -47,45 +184,15 @@ const EditPekerja = () => {
                     width: "90%",
                   }}
                 >
-                  <h3>alex</h3>
-                  <h5>adam</h5>
+                  <h3>{user.Name}</h3>
                   <h5>
-                    <Image src={pinmap} alt="Pin Map" /> Cek123
+                    <Image src={pinmap} alt="Pin Map" /> {user.Address}
                   </h5>
                   <h5>Web</h5>
-                  <h5 className="mt-2 mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Consequatur, veniam!
-                  </h5>
+                  <h5 className="mt-2 mb-3">{user.Description}</h5>
                   <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
-
-              {/* <Link
-                href="/auth/Register/Pekerja"
-                className="btn y w-100"
-                style={{
-                  border: "1px solid #5e50a1",
-                  textAlign: "center",
-                  color: "#5e50a1",
-                }}
-              >
-                Batal
-              </Link> */}
-
-              {/* <Button
-                href={"/auth/Register/Pekerja"}
-                className=" w-100 "
-                style={{
-                  border: "1px solid #5e50a1 !important",
-                  textAlign: "center !important",
-                  color: "#5e50a1 !important"
-                }}
-                
-                type="submit"
-              >
-                Batal
-              </Button> */}
             </div>
 
             {/* Kolom Kanan Baru */}
@@ -95,7 +202,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5  "
                 style={{
                   width: "90%",
-                  height: "85vh",
+                  height: "auto",
                   backgroundColor: "#FFFFFF",
                 }}
               >
@@ -173,7 +280,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5 mt-5  "
                 style={{
                   width: "90%",
-                  height: "30vh",
+                  height: "auto",
                   backgroundColor: "#FFFFFF",
                 }}
               >
@@ -183,7 +290,10 @@ const EditPekerja = () => {
                 </div>
 
                 <div className="border border-danger ">
-                  <Form className="border border-danger d-flex flex-row align-items-center ">
+                  <Form
+                    onSubmit={formikSkill.handleSubmit}
+                    className="border border-danger d-flex flex-row align-items-center "
+                  >
                     <Form.Group
                       className="mx-3 w-75 "
                       controlId="formBasicSkiil"
@@ -191,7 +301,9 @@ const EditPekerja = () => {
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Skill"
-                        required
+                        name="Name"
+                        onChange={handleFormSkill}
+                        value={formikSkill.values.Name}
                       />
                     </Form.Group>
 
@@ -212,7 +324,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5 mt-5 "
                 style={{
                   width: "90%",
-                  height: "70vh",
+                  height: "auto",
                   backgroundColor: "#FFFFFF",
                 }}
               >
@@ -222,13 +334,15 @@ const EditPekerja = () => {
                 </div>
 
                 <div>
-                  <Form>
+                  <Form onSubmit={formikPengalaman.handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                       <Form.Label className="text-muted">Posisi</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Posisi"
-                        required
+                        name="Position"
+                        onChange={handleFormPengalaman}
+                        value={formikPengalaman.values.Position}
                       />
                     </Form.Group>
                     <Form.Group
@@ -241,7 +355,9 @@ const EditPekerja = () => {
                       <Form.Control
                         type="text"
                         placeholder="Masukan Nama Perusahaan"
-                        required
+                        name="CompanyName"
+                        onChange={handleFormPengalaman}
+                        value={formikPengalaman.values.CompanyName}
                       />
                     </Form.Group>
                     <Form.Group
@@ -249,12 +365,31 @@ const EditPekerja = () => {
                       controlId="formBasicDomisili"
                     >
                       <Form.Label className=" text-muted ">
-                        Bulan/Tahun
+                        Tahun/Bulan Masuk
                       </Form.Label>
                       <Form.Control
                         type="text"
-                        placeholder="Masukkan Nama Bulan/tahun"
+                        placeholder="Masukkan Nama Tahun/Bulan"
                         required
+                        name="StartDate"
+                        onChange={handleFormPengalaman}
+                        value={formikPengalaman.values.StartDate}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 w-50"
+                      controlId="formBasicDomisili"
+                    >
+                      <Form.Label className=" text-muted ">
+                        Tahun/Bulan Selesai
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Masukkan Nama Tahun/Bulan"
+                        required
+                        name="EndDate"
+                        onChange={handleFormPengalaman}
+                        value={formikPengalaman.values.EndDate}
                       />
                     </Form.Group>
                     <Form.Group
@@ -266,9 +401,16 @@ const EditPekerja = () => {
                         as="textarea"
                         rows={5}
                         placeholder="Tuliskan deskripsi singkat"
+                        name="Description"
+                        onChange={handleFormPengalaman}
+                        value={formikPengalaman.values.Description}
                       />
                     </Form.Group>
-                    <Button className="w-100" variant="outline-warning">
+                    <Button
+                      className="w-100"
+                      variant="outline-warning"
+                      type="submit"
+                    >
                       Tambah Pengalaman Kerja
                     </Button>{" "}
                   </Form>
@@ -280,7 +422,7 @@ const EditPekerja = () => {
                 className="d-flex flex-column rounded  p-5 mt-5 "
                 style={{
                   width: "90%",
-                  height: "70vh",
+                  height: "auto",
                   backgroundColor: "#FFFFFF",
                 }}
               >
@@ -290,7 +432,7 @@ const EditPekerja = () => {
                 </div>
 
                 <div>
-                  <Form>
+                  <Form onSubmit={FormikPortofolio.handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                       <Form.Label className="text-muted">
                         Nama Aplikasi
@@ -298,7 +440,9 @@ const EditPekerja = () => {
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Aplikasi"
-                        required
+                        name="Title"
+                        onChange={handleFormProject}
+                        value={FormikPortofolio.values.Title}
                       />
                     </Form.Group>
                     <Form.Group
@@ -312,31 +456,41 @@ const EditPekerja = () => {
                         type="text"
                         placeholder="Masukan Link Repository"
                         required
+                        name="Repository"
+                        onChange={handleFormProject}
+                        value={FormikPortofolio.values.Repository}
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
                       <Form.Check
-                        className=" shadow-sm"
+                        className="shadow-sm"
                         inline
                         label="Aplikasi Mobile"
-                        name="group1"
+                        name="ProjectType"
                         type="radio"
+                        value="Aplikasi Mobile"
+                        onChange={handleFormProject}
                       />
 
                       <Form.Check
-                        className=" shadow-sm"
+                        className="shadow-sm"
                         inline
                         label="Aplikasi Web"
-                        name="group1"
+                        name="ProjectType"
                         type="radio"
+                        value="Aplikasi Web"
+                        onChange={handleFormProject}
                       />
-
-                      <Form.Group controlId="formFile" className="my-5">
-                        <Form.Label>Default file input example</Form.Label>
-                        <Form.Control type="file" />
-                      </Form.Group>
                     </Form.Group>
-                    <Button className="w-100" variant="outline-warning">
+                    <Form.Group controlId="formFile" className="my-5">
+                      <Form.Label>Default file input example</Form.Label>
+                      <Form.Control type="file" />
+                    </Form.Group>
+                    <Button
+                      className="w-100"
+                      variant="outline-warning"
+                      type="submit"
+                    >
                       Tambah Portofolio
                     </Button>{" "}
                   </Form>

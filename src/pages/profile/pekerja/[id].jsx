@@ -1,5 +1,6 @@
 import React from "react";
 import pp from "@/assets/img/Harry.png";
+import gambarportofoliodefault from "@/assets/img/f1.png"
 import Navbar1 from "@/components/Navbar/Navbar"; // Import Navbar1
 import pinmap from "@/assets/img/pinmap.png";
 import { Button, Card, Nav, Row, Tab } from "react-bootstrap";
@@ -119,7 +120,7 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
                           {project.map((item, index) => (
                             <div key={index} className="col ">
                               <Card className=" d-flex align-items-center " style={{ width: "219px" }}>
-                                <Image src={item.url} width={imageWidth} height={imageHeight} alt="Portfolio Image" />
+                                <Image src={item.url || gambarportofoliodefault} width={imageWidth} height={imageHeight} alt="Portfolio Image" />
                                 <Card.Body>
                                   <Card.Title>{item.Title}</Card.Title>
                                 </Card.Body>

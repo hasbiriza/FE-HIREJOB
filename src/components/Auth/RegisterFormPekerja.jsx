@@ -7,23 +7,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 const RegisterFormPekerja = () => {
-  // const [formData, setFormData] = useState({
-  //   Name: "",
-  //   Email: "",
-  //   PhoneNumber: "",
-  //   Password: "",
-  //   ConfirmPassword: "",
-  // });
 
-  // Fungsi untuk memperbarui data formulir saat nilai berubah
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // HandleSubmit
   const registerUser = async (values) => {
     try {
       const response = await axios.post(

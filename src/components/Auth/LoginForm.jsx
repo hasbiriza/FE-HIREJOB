@@ -5,29 +5,31 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 const LoginForm = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const [formdata, setFormData] = useState({
     Email: "",
     Password: "",
   });
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(`http://localhost:8080/api/v1/login/`, formdata)
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("User_ID", res.data.User_ID);
+        localStorage.setItem("userid", res.data.User_ID);
       })
       .catch((err) => {
         console.error("Error Login", err);
       });
     localStorage.setItem("token", Date.now());
-    router.push("/LandingPage");
+    setTimeout(() => {
+      router.push("/LandingPage");
+    }, 500); // Delay 500 ms
   };
 
-const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -74,7 +76,7 @@ const handleChange = (e) => {
                 name="Password"
                 value={formdata.Password}
                 placeholder="Masukkan password"
-                required
+                // required
                 onChange={handleChange}
               />
             </Form.Group>
@@ -86,10 +88,7 @@ const handleChange = (e) => {
               Lupa Kata Sandi ?
             </Link>
 
-            <Button
-              className=" my-4 BgPrimaryColor w-100 "
-              type="submit"
-            >
+            <Button className=" my-4 BgPrimaryColor w-100 " type="submit">
               Masuk
             </Button>
             <p className=" text-center ">

@@ -6,7 +6,7 @@ import Image from "next/image";
 import style from "./LandingPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import NavbarLogin from "@/components/NavbarLogin/NavbarLogin";
@@ -20,14 +20,22 @@ const LandingPage = () => {
 
 const [token, setToken] = useState("")
 const [userid, setUserid] = useState("") 
+const [isLoggedIn, setIsLoggedIn] = useState("");
+
 useEffect (() => {
-  setToken(localStorage.getItem("token"))
-  setUserid(localStorage.getItem("User_ID"))
-},[token,userid])
+  const token = localStorage.getItem('token');
+  setToken(token)
+  setUserid(localStorage.getItem("userid"))
+  setIsLoggedIn(token !== null);
+},[token,userid,isLoggedIn])
 
   return (
     <>
-      {token && userid ? <NavbarLogin User_ID={userid} /> : <Navbar />}
+      {isLoggedIn ? (
+        <NavbarLogin userid={userid}  /> 
+      ) : (
+        <Navbar />  
+      )}
       {/* Batas Navbar */}
 
       <section className="container border border-warning ">
