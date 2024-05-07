@@ -26,7 +26,7 @@ const Section1 = () => {
           </p>
         </div>
         {/* Button */}
-        <Link href={"/auth/Login"}>
+        <Link href={"/home"}>
           <Button className=" mt-3 ms-5 BgSecondaryColor">
             Mulai Dari Sekarang
           </Button>

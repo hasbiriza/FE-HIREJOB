@@ -11,11 +11,11 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedNavbar";
 
 const EditPekerja = () => {
   const [user, setUser] = useState({});
-  const [endDate, setEndDate] = useState(new Date()); // State untuk menyimpan tanggal akhir bekerja
-  const [startDate, setStartDate] = useState(new Date()); // State untuk menyimpan tanggal
+  
 
   useEffect(() => {
     const user = localStorage.getItem("userid");
@@ -151,7 +151,7 @@ const EditPekerja = () => {
       className="full-page-backgorund"
       style={{ backgroundColor: "#F6F7F8" }}
     >
-      <Navbar1 />
+      <AuthenticatedNavbar/>
       <div
         id="Backgorund Ungu Garis"
         style={{
@@ -165,7 +165,6 @@ const EditPekerja = () => {
 
       <div className="container">
         <div
-          className="border border-info"
           style={{ marginTop: "80px", zIndex: "1", position: "relative" }}
         >
           <div className="row">
@@ -185,18 +184,18 @@ const EditPekerja = () => {
                   }}
                 >
                   <h3>{user.Name}</h3>
-                  <h5>
+                  <h5 className="text-muted">
                     <Image src={pinmap} alt="Pin Map" /> {user.Address}
                   </h5>
-                  <h5>Web</h5>
-                  <h5 className="mt-2 mb-3">{user.Description}</h5>
+                  <h5 className="text-muted">Position</h5>
+                  <h6 className="mt-2 mb-3 text-muted">{user.Description}</h6>
                   <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
             </div>
 
             {/* Kolom Kanan Baru */}
-            <div className="col-12 col-md-8 d-flex flex-column justify-content-center align-items-center border border-danger ">
+            <div className="col-12 col-md-8 d-flex flex-column justify-content-center align-items-center   ">
               {/* Data Diri */}
               <div
                 className="d-flex flex-column rounded  p-5  "
@@ -289,10 +288,10 @@ const EditPekerja = () => {
                   <hr />
                 </div>
 
-                <div className="border border-danger ">
+                <div >
                   <Form
                     onSubmit={formikSkill.handleSubmit}
-                    className="border border-danger d-flex flex-row align-items-center "
+                    className=" d-flex flex-row align-items-center "
                   >
                     <Form.Group
                       className="mx-3 w-75 "

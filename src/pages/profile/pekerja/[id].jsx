@@ -18,6 +18,7 @@ import {
   FaRegEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
+import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedNavbar";
 
 
 const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
@@ -26,7 +27,7 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
 
   return (
     <>
-      <Navbar1 />
+      <AuthenticatedNavbar/>
       <div
         style={{
           backgroundColor: "#5E50A1",
@@ -52,11 +53,11 @@ const ProfileIdDetail = ({ pekerja, pengalaman, project, skill }) => {
                 <div style={{ width: "90%" }}>
                   <h3>{pekerja.Name}</h3>
                   <h5>{pekerja.Position}</h5>
-                  <h5>
+                  <h5 className="text-muted">
                     <Image src={pinmap} alt="Pin Map" /> {pekerja.Address}
                   </h5>
-                  <h5>{pekerja.Status}</h5>
-                  <h5 className="mt-2 mb-3">{pekerja.Description}</h5>
+                  <h6 className="text-muted">{pekerja.Status}</h6>
+                  <h6 className="mt-2 mb-3 text-muted">{pekerja.Description}</h6>
                   <Link href={`/hire//${pekerja.ID}`}>
                     <Button
                       className="w-100"

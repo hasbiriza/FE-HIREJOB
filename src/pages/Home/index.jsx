@@ -5,6 +5,7 @@ import styles from "./home.module.css";
 import Footer from "@/components/Footer/Footer";
 import CardHome from "@/components/CardHome";
 import axios from "axios";
+import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedNavbar";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar1 />
+      <AuthenticatedNavbar/>
       <section id="Container-Ungu">
         <div
           className="container-fluid"
@@ -38,7 +39,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="container mt-5">
+        <div className="container mt-5 shadow-sm ">
           <div id="search-bar" className="mb-5">
             <InputGroup>
               <Form.Control size="lg" placeholder="Search For Any Skill?" />
