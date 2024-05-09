@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import Navbar1 from "@/components/Navbar/Navbar";
 import Image from "next/image"; // Import Image dari next/image
 import miniprofile from "@/assets/img/miniprofile.png";
 import pp from "@/assets/img/Harry.png";
@@ -17,6 +16,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/router";
+import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedNavbar";
 
 const ProfilePerekrut = () => {
   const router = useRouter();
@@ -38,7 +38,7 @@ const ProfilePerekrut = () => {
 
   return (
     <>
-      <Navbar1 />
+       <AuthenticatedNavbar/>
       <div
         className="container d-flex flex-column align-items-center "
         style={{

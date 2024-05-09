@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Footer from "@/components/Footer/Footer";
-import Navbar1 from "@/components/Navbar/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Form } from "react-bootstrap";
@@ -8,6 +7,7 @@ import pp from "@/assets/img/Harry.png";
 import pinmap from "@/assets/img/pinmap.png";
 import { useRouter } from "next/router";
 import axios from "axios";
+import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedNavbar";
 
 const Hire = () => {
   const [users, setUsers] = useState([]);
@@ -48,11 +48,10 @@ const Hire = () => {
       className="full-page-backgorund"
       style={{ backgroundColor: "#F6F7F8" }}
     >
-      <Navbar1 />
+     <AuthenticatedNavbar/>
 
       <div className="container">
         <div
-          className="border border-danger"
           style={{ marginTop: "80px", zIndex: "1", position: "relative" }}
         >
           <div className="row">
@@ -93,9 +92,9 @@ const Hire = () => {
             </div>
 
             {/* Kolom Kanan Baru */}
-            <div className="col-12 col-md-8 d-flex justify-content-center align-items-center border border-danger ">
+            <div className="col-12 col-md-8 d-flex justify-content-center align-items-center  ">
               <div
-                className="d-flex flex-column border border-info h-auto "
+                className="d-flex flex-column h-auto "
                 style={{ width: "90%",}}
               >
                 <div>

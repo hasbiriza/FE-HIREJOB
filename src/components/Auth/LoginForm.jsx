@@ -19,6 +19,7 @@ const LoginForm = () => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("userid", res.data.User_ID);
+        localStorage.setItem("role", res.data.Role);
       })
       .catch((err) => {
         console.error("Error Login", err);

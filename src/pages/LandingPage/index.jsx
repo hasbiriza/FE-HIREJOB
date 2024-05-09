@@ -38,7 +38,7 @@ useEffect (() => {
       )}
       {/* Batas Navbar */}
 
-      <section className="container border border-warning ">
+      <section className="container ">
         <Section1 />
         <div className="row mt-4 border border-danger">
           <div className="col-md-6 col-12 d-grid justify-content-center">
@@ -52,9 +52,9 @@ useEffect (() => {
             </div>
           </div>
           <div className="col-md-5 col-12  mt-md-0 text-md-start text-wrap">
-            <h2 className="fw-bolder">
+            <h1 className="fw-bolder">
               Kenapa harus mencari tallent di peworld
-            </h2>
+            </h1>
             <div className="row mt-4">
               <div className="col-12">
                 <p>

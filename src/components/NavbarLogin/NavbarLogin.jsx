@@ -66,8 +66,11 @@ function NavbarLogin({ userid }) {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="border-0 shadow">
+              <Dropdown.Item href={`/profile/pekerja/${userid}`}>
+                  Dashboard
+                </Dropdown.Item>
                 <Dropdown.Item href={`/profile/edit/pekerja/${userid}`}>
-                  Pengaturan
+                  Pengaturan Akun
                 </Dropdown.Item>
                 <Dropdown.Item
                   href="#"

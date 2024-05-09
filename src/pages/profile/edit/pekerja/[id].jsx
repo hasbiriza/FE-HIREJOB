@@ -15,7 +15,6 @@ import AuthenticatedNavbar from "@/components/AuthenticatedNavbar/AuthenticatedN
 
 const EditPekerja = () => {
   const [user, setUser] = useState({});
-  
 
   useEffect(() => {
     const user = localStorage.getItem("userid");
@@ -146,12 +145,88 @@ const EditPekerja = () => {
   };
   // Akhir Portofolio Formik
 
+  // Datadiri Formik
+
+  const FormikDataDiri = useFormik({
+    initialValues: {
+      Name: user.photo,
+      JobDesk: user.JobDesk,
+      CompanyName: user.CompanyName,
+      Address: user.Address,
+      Description: user.Description,
+    },
+    onSubmit: async (values) => {
+      const userID = parseInt(localStorage.getItem("userid"));
+      const updatedValues = {
+        ...values, // Gabungkan values yang ada dengan
+      };
+      console.log(updatedValues); // Log the value of updatedValues
+
+      try {
+        const response = await axios.put(
+          `http://localhost:8080/api/v1/user/update-worker/${userID}`,
+          updatedValues
+        );
+        console.log(response);
+        if (response.status === 200) {
+          alert(`Update DataDiri berhasil: ${response.data.Message}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan saat melakukan pendaftaran");
+      }
+    },
+  });
+
+  const handleFormDataDiri = (event) => {
+    const { target } = event;
+    FormikDataDiri.setFieldValue(target.name, target.value);
+  };
+  //  const FormikDataDiri = useFormik({
+  //   initialValues: {
+  //     Name: user.photo,
+  //     JobDesk: user.JobDesk,
+  //     CompanyName: user.CompanyName,
+  //     Address: user.Address,
+  //     Description:user.Description,
+  //   },
+  //   onSubmit: async (values) => {
+  //     const userID = parseInt(localStorage.getItem("userid"));
+  //     const updatedValues = {
+  //       ...values, // Gabungkan values yang ada dengan
+  //       UserId: userID, // Properti UserID baru
+  //     };
+
+  //     console.log(updatedValues); // Log the value of updatedValues
+
+  //     try {
+  //       const response = await axios.put(
+  //         `http://localhost:8080/api/v1/user/update-worker/${user}`,
+  //         updatedValues
+  //       );
+  //       console.log(response);
+  //       if (response.status === 200) {
+  //         alert(`Update DataDiri berhasil: ${response.data.Message}`);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //       alert("Terjadi kesalahan saat melakukan pendaftaran");
+  //     }
+  //   },
+  // });
+
+  // const handleFormDataDiri = (event) => {
+  //   const { target } = event;
+  //   FormikDataDiri.setFieldValue(target.name, target.value);
+  // };
+  // Akhir Datadiri Formik
+
   return (
     <div
       className="full-page-backgorund"
       style={{ backgroundColor: "#F6F7F8" }}
     >
-      <AuthenticatedNavbar/>
+      <AuthenticatedNavbar />
       <div
         id="Backgorund Ungu Garis"
         style={{
@@ -164,9 +239,7 @@ const EditPekerja = () => {
       />
 
       <div className="container">
-        <div
-          style={{ marginTop: "80px", zIndex: "1", position: "relative" }}
-        >
+        <div style={{ marginTop: "80px", zIndex: "1", position: "relative" }}>
           <div className="row">
             {/* Kolom Kiri */}
             <div className="col-12 col-md-4">
@@ -187,9 +260,8 @@ const EditPekerja = () => {
                   <h5 className="text-muted">
                     <Image src={pinmap} alt="Pin Map" /> {user.Address}
                   </h5>
-                  <h5 className="text-muted">Position</h5>
+                  <h5 className="text-muted">{user.JobDesk}</h5>
                   <h6 className="mt-2 mb-3 text-muted">{user.Description}</h6>
-                  <h3 className="mt-3">Skill</h3>
                 </div>
               </div>
             </div>
@@ -211,7 +283,7 @@ const EditPekerja = () => {
                 </div>
 
                 <div>
-                  <Form>
+                  <Form onSubmit={FormikDataDiri.handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                       <Form.Label className="text-muted">
                         Nama Lengkap
@@ -219,7 +291,9 @@ const EditPekerja = () => {
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Nama Lengkap"
-                        required
+                        name="Name"
+                        onChange={handleFormDataDiri}
+                        value={FormikDataDiri.values.Name}
                       />
                     </Form.Group>
 
@@ -229,6 +303,9 @@ const EditPekerja = () => {
                         type="text"
                         placeholder="Masukan jobdesk"
                         required
+                        name="JobDesk"
+                        onChange={handleFormDataDiri}
+                        value={FormikDataDiri.values.JobDesk}
                       />
                     </Form.Group>
 
@@ -237,7 +314,10 @@ const EditPekerja = () => {
                       <Form.Control
                         type="text"
                         placeholder="Masukkan Domisili"
-                        required
+                  
+                        name="Address"
+                        onChange={handleFormDataDiri}
+                        value={FormikDataDiri.values.Address}
                       />
                     </Form.Group>
 
@@ -249,6 +329,9 @@ const EditPekerja = () => {
                         type="text"
                         placeholder="Masukkan tempat kerja"
                         required
+                        name="CompanyName"
+                        onChange={handleFormDataDiri}
+                        value={FormikDataDiri.values.CompanyName}
                       />
                     </Form.Group>
 
@@ -261,6 +344,9 @@ const EditPekerja = () => {
                         as="textarea"
                         rows={5}
                         placeholder="Tuliskan deskripsi singkat"
+                        name="Description"
+                        onChange={handleFormDataDiri}
+                        value={FormikDataDiri.values.Description}
                       />
                     </Form.Group>
 
@@ -288,7 +374,7 @@ const EditPekerja = () => {
                   <hr />
                 </div>
 
-                <div >
+                <div>
                   <Form
                     onSubmit={formikSkill.handleSubmit}
                     className=" d-flex flex-row align-items-center "
