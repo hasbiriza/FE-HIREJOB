@@ -73,7 +73,6 @@ function NavbarLogin({ userid }) {
                   Pengaturan Akun
                 </Dropdown.Item>
                 <Dropdown.Item
-                  href="#"
                   onClick={(e) => {
                     e.preventDefault();
                     localStorage.clear();
