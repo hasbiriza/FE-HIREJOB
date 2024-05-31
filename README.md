@@ -1,12 +1,12 @@
 <!-- ABOUT THE PROJECT -->
 <br />
 <div align="center">
-  <img src="https://github.com/yohansky/BE-Hirejob/assets/69236028/5e71bf99-695c-4663-bdc1-aed6e17534c0" />
+  <img src="https://github.com/hasbiriza/FE-HIREJOB/blob/main/public/LogoHirejob.png" />
   <br />
   <h1>Peworld</h1>
   <a href="https://github.com/yohansky/Fe-HireJob-Next">View Demo</a>
     .
-    <a href="https://github.com/yohansky/BE-Hirejob">Api Demo</a>
+    <a href="https://github.com/hasbiriza/BE-HIREJOB">Api Demo</a>
 </div>
 
 ## Table of Contents
