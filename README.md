@@ -78,7 +78,7 @@ This is an example of how to list things you need to use the software and how to
 - Clone This Front End Repo
 
 ```
-git clone https://github.com/yohansky/Fe-HireJob-Next
+git clone https://github.com/hasbiriza/FE-HIREJOB
 ```
 
 - Go To Folder Repo
@@ -161,6 +161,6 @@ REACT_APP_BACKEND = [BACKEND_URL]
 
 ### Related Project
 
-:rocket: [`Backend Hirejob`](https://github.com/yohansky/BE-Hirejob)
+:rocket: [`Backend Hirejob`](https://github.com/hasbiriza/BE-HIREJOB)
 
-:rocket: [`Frontend Hirejob`](https://github.com/yohansky/Fe-HireJob-Next)
+:rocket: [`Frontend Hirejob`](https://github.com/hasbiriza/FE-HIREJOB)
