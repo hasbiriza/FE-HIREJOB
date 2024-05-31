@@ -4,10 +4,10 @@
   <img src="https://github.com/yohansky/BE-Hirejob/assets/69236028/5e71bf99-695c-4663-bdc1-aed6e17534c0" />
   <br />
   <h1>Peworld</h1>
-<!--   <a href="https://github.com/yohansky/Fe-HireJob-Next">View Demo</a>
+  <a href="https://github.com/yohansky/Fe-HireJob-Next">View Demo</a>
     .
     <a href="https://github.com/yohansky/BE-Hirejob">Api Demo</a>
-</div> -->
+</div>
 
 ## Table of Contents
 
@@ -116,51 +116,51 @@ REACT_APP_BACKEND = [BACKEND_URL]
     <td>Register</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/749da462-dd84-4a39-a461-ac1cbfb6bcd3" border="0" alt="1"/></td>
-    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/fad3daea-554a-42b8-b6a1-b27e2c234c1f" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/749da462-dd84-4a39-a461-ac1cbfb6bcd3" border="0" alt="1"/></td>
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/fad3daea-554a-42b8-b6a1-b27e2c234c1f" border="0" alt="1"/></td>
   </tr>
   <tr>
     <td>LandingPage (sebelum login)</td>
     <td>LandingPage (sesudah login)</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/0d726535-1835-4edf-acf1-5aa388d22146" border="0" alt="1"/></td>
-    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/d1d8eadb-8ba5-4b99-9b85-a98093a50778" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/0d726535-1835-4edf-acf1-5aa388d22146" border="0" alt="1"/></td>
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/d1d8eadb-8ba5-4b99-9b85-a98093a50778" border="0" alt="1"/></td>
   </tr>
   <tr>
     <td>Pencarian Pekerja (Rekruter)</td>
     <td>Profile Pekerja (portofolio)</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/8d4e94f2-0b13-43d3-b4ed-df1775b46b92" border="0" alt="1"/></td>
-    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/4b81e0b8-1a6f-41f9-a8e8-03ae89eae290" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/8d4e94f2-0b13-43d3-b4ed-df1775b46b92" border="0" alt="1"/></td>
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/4b81e0b8-1a6f-41f9-a8e8-03ae89eae290" border="0" alt="1"/></td>
   </tr>
   <tr>
     <td>Profile Pekerja (pengalaman)</td>
     <td>Profile Pekerja Edit</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/2c75d1eb-3064-4c73-babe-fa03cad7b0a8"border="0" alt="1"/></td>
-    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/facf7141-f8ca-49b6-a5a2-ebbf5d560697" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/2c75d1eb-3064-4c73-babe-fa03cad7b0a8"border="0" alt="1"/></td>
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/facf7141-f8ca-49b6-a5a2-ebbf5d560697" border="0" alt="1"/></td>
   </tr>
   <tr>
     <td>Profile Perusahaan</td>
     <td>Profile Perusahaan Edit</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/600ee873-a25d-4970-88e1-2fca2f9a32ae" border="0" alt="1"/></td>
-    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/1148d865-61cb-449b-9ec5-dc1dc2ed6952" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/600ee873-a25d-4970-88e1-2fca2f9a32ae" border="0" alt="1"/></td>
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/1148d865-61cb-449b-9ec5-dc1dc2ed6952" border="0" alt="1"/></td>
   </tr>
   <tr>
     <td>Hire</td>
   </tr>
   <tr>
-<!--     <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/cf01378e-e365-4389-9d4d-4e802d0e7897" border="0" alt="1"/></td> -->
+    <td><img width="350px" src="https://github.com/yohansky/Fe-HireJob-Next/assets/69236028/cf01378e-e365-4389-9d4d-4e802d0e7897" border="0" alt="1"/></td>
   </tr>
 </table>
 
 ### Related Project
 
-:rocket: [`Backend Hirejob`](https://github.com/hasbiriza/BE-HIREJOB)
+:rocket: [`Backend Hirejob`](https://github.com/yohansky/BE-Hirejob)
 
-:rocket: [`Frontend Hirejob`](https://github.com/hasbiriza/FE-HIREJOB)
+:rocket: [`Frontend Hirejob`](https://github.com/yohansky/Fe-HireJob-Next)
