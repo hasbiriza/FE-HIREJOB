@@ -30,19 +30,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Built With
 
-- [React js](https://reactjs.org/)
-- [Bootstrap Css](https://getbootstrap.com/)
-- [Axios](https://www.npmjs.com/package/react-axios)
-- [React-Dom](https://www.npmjs.com/package/react-dom)
-
-## Getting Started
-
 ### Built With
 
 - [Next js](https://nextjs.org/)
 - [Bootstrap Css](https://getbootstrap.com/)
 - [Axios](https://www.npmjs.com/package/react-axios)
-- [React-Dom](https://www.npmjs.com/package/react-dom)
+- [Cloudinary](https://cloudinary.com/)
+
+## Getting Started
 
 First, run the development server:
 
@@ -70,8 +65,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 This is an example of how to list things you need to use the software and how to install them.
 - [VS Code](https://code.visualstudio.com/)
-- [nodejs](https://nodejs.org/en/download/)
-- [React js](https://reactjs.org/)
+- [Next js](https://nextjs.org/)
 
 ### Installation
 
