@@ -163,4 +163,4 @@ REACT_APP_BACKEND = [BACKEND_URL]
 
 :rocket: [`Backend Hirejob`](https://github.com/hasbiriza/BE-HIREJOB)
 
-:rocket: [`Frontend Hirejob`](https://github.com/hasbiriza/FE-HIREJOB)
+:rocket: [`Frontend Hirejob`](https://github.com/hasbiriza/FE-HIREJOB?tab=readme-ov-file)
