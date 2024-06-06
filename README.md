@@ -4,8 +4,6 @@
   <img src="https://github.com/hasbiriza/FE-HIREJOB/blob/main/public/LogoHirejob.png" />
   <br />
   <h1>Peworld</h1>
-
-<h3 align="center">Blanja</h3>
   <p align="center">
     <a href="https://github.com/hasbiriza/FE-HIREJOB"><strong>Explore the docs »</strong></a>
     <br />
