@@ -4,9 +4,17 @@
   <img src="https://github.com/hasbiriza/FE-HIREJOB/blob/main/public/LogoHirejob.png" />
   <br />
   <h1>Peworld</h1>
-  <a href="https://github.com/yohansky/Fe-HireJob-Next">View Demo</a>
-    .
-    <a href="https://github.com/hasbiriza/BE-HIREJOB">Api Demo</a>
+
+<h3 align="center">Blanja</h3>
+  <p align="center">
+    <a href="https://github.com/hasbiriza/FE-HIREJOB"><strong>Explore the docs »</strong></a>
+    <br />
+  <a href="https://peworld-hiring-app.vercel.app/">View Demo</a>
+    ||
+     <a href="https://github.com/hasbiriza/BE-HIREJOB">View Back End</a>
+    ||
+    <a href="https://documenter.getpostman.com/view/31500374/2sA3QwcpsG">Api Demo</a>
+  </p>
 </div>
 
 ## Table of Contents
@@ -78,7 +86,7 @@ git clone https://github.com/hasbiriza/FE-HIREJOB
 - Go To Folder Repo
 
 ```
-cd Fe-HireJob-Next
+cd FE-HIREJOB
 ```
 
 - Install Module
